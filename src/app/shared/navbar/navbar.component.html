@@ -1,0 +1,111 @@
+<header #navbar id="navbar" class="navbar-sticky">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center py-4 px-4">
+        <div class="flex items-center justify-between w-full md:w-auto  md:mb-0">
+            <a href="top" class="flex justify-center items-center gap-2" aria-label="Page d'accueil du portfolio">
+                <img src="https://via.placeholder.com/100x40.png" alt="easyPro" class="h-10">
+                <span aria-hidden="true" class="text-lg lg:text-xl">
+                    <strong> EasyPro<span class="text-blue-600">.</span></strong>
+                </span>
+            </a>
+            <button title="Ouvrir le menu" class="md:hidden focus:outline-none" (click)="toggleMenu()">
+                <i class="fas fa-bars h-6 w-6 text-gray-700"></i>
+            </button>
+        </div>
+        <div class="hidden md:flex items-center space-x-4 md:space-x-6 flex-grow justify-end">
+            <div class="relative">
+                <input type="text" placeholder="Rechercher..."
+                    class="bg-gray-100 rounded-full px-4 py-2 pl-8 text-sm focus:outline-none focus:shadow-outline w-full md:w-64 lg:w-80">
+                <div class="absolute left-0 top-0 mt-2 ml-2">
+                    <i class="fas fa-search h-4 w-4 text-gray-600"></i>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <app-dropdown>
+                    <app-dropdown-icon>
+                        <i class="fas fa-adjust text-lg"></i>
+                    </app-dropdown-icon>
+                    <app-dropdown-placeholder class="flex items-center gap-2">
+                    </app-dropdown-placeholder>
+                    <app-dropdown-items>
+                        <app-dropdown-item [option]="'light'" (selectOption)="onSelect($event)">
+                            Mode clair
+                        </app-dropdown-item>
+                        <app-dropdown-item [option]="'dark'" (selectOption)="onSelect($event)">
+                            Mode sombre
+                        </app-dropdown-item>
+                    </app-dropdown-items>
+                </app-dropdown>
+                <app-dropdown>
+                    <app-dropdown-icon>
+                        <i class="fas fa-globe"></i>
+                    </app-dropdown-icon>
+                    <app-dropdown-placeholder class="flex items-center gap-2">
+                        <span>FR</span>
+                    </app-dropdown-placeholder>
+                    <app-dropdown-items>
+                        <app-dropdown-item *ngFor="let option of languages" [option]="option"
+                            (selectOption)="onSelect($event)">
+                            {{ option.label }}
+                        </app-dropdown-item>
+                    </app-dropdown-items>
+                </app-dropdown>
+            </div>
+        </div>
+        <nav [ngClass]="{'hidden': !isMenuOpen, 'fixed': isMenuOpen, 'inset-0': isMenuOpen, 'bg-white': isMenuOpen, 'z-50': isMenuOpen, 'flex': isMenuOpen, 'flex-col': isMenuOpen, 'md:hidden': true}"
+            class="w-full md:w-auto">
+            <div class="p-4 md:p-0 flex flex-col md:flex-row md:space-x-6 w-full h-full">
+                <div class="flex justify-between items-center mb-4">
+                    <img src="https://via.placeholder.com/100x40.png" alt="easyPro" class="h-10">
+                    <button title="Fermer le menu" class="focus:outline-none" (click)="toggleMenu()">
+                        <i class="fas fa-times h-6 w-6 text-gray-700"></i>
+                    </button>
+                </div>
+                <div class="relative mb-4 w-full">
+                    <input type="text" placeholder="Rechercher..."
+                        class="bg-gray-100 rounded-full px-4 py-2 pl-8 text-sm focus:outline-none focus:shadow-outline w-full">
+                    <div class="absolute left-0 top-0 mt-2 ml-2">
+                        <i class="fas fa-search h-4 w-4 text-gray-600"></i>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4 mb-4">
+                    <app-dropdown>
+                        <app-dropdown-icon>
+                            <i class="fas fa-adjust text-lg"></i>
+                        </app-dropdown-icon>
+                        <app-dropdown-placeholder class="flex items-center gap-2">
+                        </app-dropdown-placeholder>
+                        <app-dropdown-items>
+                            <app-dropdown-item [option]="'light'" (selectOption)="onSelect($event)">
+                                Mode clair
+                            </app-dropdown-item>
+                            <app-dropdown-item [option]="'dark'" (selectOption)="onSelect($event)">
+                                Mode sombre
+                            </app-dropdown-item>
+                        </app-dropdown-items>
+                    </app-dropdown>
+                    <app-dropdown>
+                        <app-dropdown-icon>
+                            <i class="fas fa-globe"></i>
+                        </app-dropdown-icon>
+                        <app-dropdown-placeholder class="flex items-center gap-2">
+                            <span>FR</span>
+                        </app-dropdown-placeholder>
+                        <app-dropdown-items>
+                            <app-dropdown-item *ngFor="let option of languages" [option]="option"
+                                (selectOption)="onSelect($event)">
+                                {{ option.label }}
+                            </app-dropdown-item>
+                        </app-dropdown-items>
+                    </app-dropdown>
+                </div>
+                <ul class="flex flex-col space-y-4">
+                    <li><a class="text-gray-700 hover:text-blue-600" href="#">Annuaire Artisans</a></li>
+                    <li><a class="text-gray-700 hover:text-blue-600" href="#">Espace Clients</a></li>
+                    <li><a class="text-gray-700 hover:text-blue-600" href="#">Espace Artisans</a></li>
+                </ul>
+                <a class="bg-blue-600 text-white px-3 py-2 md:px-4 md:py-2 rounded hover:bg-blue-700 text-sm md:text-base mt-4"
+                    href="#">Devenir Artisan</a>
+            </div>
+        </nav>
+    </div>
+</header>

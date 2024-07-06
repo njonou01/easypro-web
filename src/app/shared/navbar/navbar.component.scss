@@ -1,0 +1,49 @@
+.navbar-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.navbar-scrolled {
+  background-color: white !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  z-index: 10;
+}
+
+.dropdown-menu.active {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  nav.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    overflow-y: auto;
+  }
+
+  .flex-grow {
+    flex-grow: 1;
+  }
+
+  .md\\:hidden {
+    display: none;
+  }
+}
